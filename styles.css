@@ -1,44 +1,51 @@
 /* ==========================================================================
    Design System — Intellectual Minimalism
 
-   Type Scale (6 steps):
-     --text-xs   12px  Level 5 tertiary (footer)
-     --text-sm   14px  Level 4–5 supporting (co-authors, position, toggle)
-     --text-base 16px  Level 3 credential (status+journal) + Level 6 body
-     --text-md   18px  (reserved)
-     --text-lg   22px  Level 2 content anchor (paper titles)
-     --text-xl   28px  Level 1 page anchor (name)
+   Typography: 5 sizes on a 4px grid, 4 line-heights, 2 fonts.
 
-   Fonts (2 families):
-     Source Serif 4 — title voice (name, paper titles)
-     Hanken Grotesk — body voice (everything else)
+   Scale (base 16px):
+     --text-xs    12px  0.75×   Nav labels, footer
+     --text-sm    14px  0.875×  L4–L5 metadata
+     --text-base  16px  1×      L3 credentials, L6 body
+     --text-lg    20px  1.25×   L2 paper titles
+     --text-xl    28px  1.75×   L1 name
+
+   Fonts:
+     Source Serif 4 (serif) — L1 name, L2 paper titles
+     Hanken Grotesk (sans)  — everything else
+
+   5 Typographic Styles:
+     1. Display    — 28px serif 700, leading 1.2   (name)
+     2. Title      — 20px serif 700, leading 1.2   (paper titles)
+     3. Credential — 16px sans  500, leading 1.4   (status+journal)
+     4. Body       — 16px sans  400, leading 1.6   (abstracts)
+     5. Meta       — 14px sans  300–400, leading 1.5 (everything else)
+     + Label       — 12px sans  500 uppercase       (section labels)
    ========================================================================== */
 
 :root {
-  /* Type scale */
-  --text-xs: 0.75rem;     /* 12px */
-  --text-sm: 0.875rem;    /* 14px */
-  --text-base: 1rem;      /* 16px */
-  --text-md: 1.125rem;    /* 18px */
-  --text-lg: 1.375rem;    /* 22px */
-  --text-xl: 1.75rem;     /* 28px */
+  /* Type scale — 5 steps, 4px grid */
+  --text-xs: 0.75rem;      /* 12px */
+  --text-sm: 0.875rem;     /* 14px */
+  --text-base: 1rem;       /* 16px */
+  --text-lg: 1.25rem;      /* 20px */
+  --text-xl: 1.75rem;      /* 28px */
 
-  /* Line heights */
+  /* Line heights — 4 values */
   --leading-tight: 1.2;
-  --leading-snug: 1.3;
   --leading-normal: 1.4;
   --leading-relaxed: 1.5;
   --leading-loose: 1.6;
 
-  /* Spacing — 4pt base */
-  --space-2xs: 0.25rem;   /* 4px */
-  --space-xs: 0.5rem;     /* 8px */
-  --space-sm: 0.75rem;    /* 12px */
-  --space-md: 1rem;       /* 16px */
-  --space-lg: 1.5rem;     /* 24px */
-  --space-xl: 2rem;       /* 32px */
-  --space-2xl: 3rem;      /* 48px */
-  --space-3xl: 4rem;      /* 64px */
+  /* Spacing — 4px grid */
+  --space-2xs: 0.25rem;    /* 4px */
+  --space-xs: 0.5rem;      /* 8px */
+  --space-sm: 0.75rem;     /* 12px */
+  --space-md: 1rem;        /* 16px */
+  --space-lg: 1.5rem;      /* 24px */
+  --space-xl: 2rem;        /* 32px */
+  --space-2xl: 3rem;       /* 48px */
+  --space-3xl: 4rem;       /* 64px */
 
   /* Colors */
   --color-text: #3A3A3A;
@@ -58,7 +65,7 @@
 }
 
 /* ==========================================================================
-   Base — Hanken Grotesk is the default
+   Base
    ========================================================================== */
 
 body {
@@ -72,30 +79,20 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-body, h1, h2, h3, h4, h5, h6, p {
-  margin: 0;
+body, h1, h2, h3, h4, h5, h6, p { margin: 0; }
+
+a { color: var(--color-text); text-decoration: none; }
+a:hover { color: var(--color-text); }
+a:visited { color: var(--color-text); }
+
+button:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
 }
 
 /* ==========================================================================
-   Links — inherit font, style only the underline
-   ========================================================================== */
-
-a {
-  color: var(--color-text);
-  text-decoration: none;
-}
-
-a:hover {
-  color: var(--color-text);
-}
-
-a:visited {
-  color: var(--color-text);
-}
-
-/* ==========================================================================
-   Level 1 — Page Anchor (Name)
-   28px serif bold. The single largest element. Seen once, orients everything.
+   Style 1: Display — L1 Name
+   28px / 1.2 / serif 700
    ========================================================================== */
 
 h4 {
@@ -107,8 +104,8 @@ h4 {
 }
 
 /* ==========================================================================
-   Level 4 — Supporting Context (Position, interests label)
-   14px sans, light/regular weight, secondary color. Quiet credentials.
+   Style 5: Meta — L4 Supporting context
+   14px / 1.5 / sans 300
    ========================================================================== */
 
 h5 {
@@ -118,6 +115,7 @@ h5 {
   color: var(--color-text-secondary);
 }
 
+/* Label variant — 12px uppercase */
 h6 {
   font-size: var(--text-xs);
   line-height: var(--leading-relaxed);
@@ -129,29 +127,7 @@ h6 {
 }
 
 /* ==========================================================================
-   Level 6 — Expanded Content (Abstract prose)
-   16px sans, secondary color, loose line-height for comfortable reading.
-   ========================================================================== */
-
-.section-content p,
-.abstract p {
-  font-size: var(--text-base);
-  line-height: var(--leading-loose);
-  max-width: 65ch;
-  color: var(--color-text-secondary);
-}
-
-/* ==========================================================================
-   Focus
-   ========================================================================== */
-
-button:focus-visible {
-  outline: 2px solid var(--color-accent);
-  outline-offset: 2px;
-}
-
-/* ==========================================================================
-   Intro Sidebar — the identity card
+   Sidebar — Identity Card
    ========================================================================== */
 
 .content {
@@ -161,9 +137,6 @@ button:focus-visible {
 
 .intro {
   margin-right: var(--gutter);
-  position: sticky;
-  top: var(--space-xl);
-  align-self: flex-start;
 }
 
 .profile-image {
@@ -172,13 +145,8 @@ button:focus-visible {
   height: auto;
 }
 
-.brief-bio {
-  margin-top: var(--space-lg);
-}
-
-.position {
-  margin-top: var(--space-xs);
-}
+.brief-bio { margin-top: var(--space-lg); }
+.position { margin-top: var(--space-xs); }
 
 .interest {
   margin-top: var(--space-lg);
@@ -186,24 +154,29 @@ button:focus-visible {
   border-top: 1px solid var(--color-rule-light);
 }
 
-/* Level 4 — research interest values */
+/* Meta style — interests */
 .interest span {
   font-size: var(--text-sm);
   font-weight: 300;
   color: var(--color-text-secondary);
 }
 
-/* Level 4 — email */
-.contact {
-  margin-top: var(--space-md);
-}
+/* Meta style — email */
+.contact { margin-top: var(--space-md); }
+.contact a { font-size: var(--text-sm); }
 
-.contact a {
+/* Meta style — CV link */
+.cv-link { margin-top: var(--space-sm); }
+.cv-link a {
   font-size: var(--text-sm);
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
 }
 
 /* ==========================================================================
-   Paper Section — the research record
+   Paper Section
    ========================================================================== */
 
 .paper-section {
@@ -211,89 +184,81 @@ button:focus-visible {
   min-width: 0;
 }
 
-/* Level 5 — CV link (tertiary action, uppercase label) */
-.paper-section > .section-content:first-child {
-  margin-top: 0;
-  padding-top: var(--space-lg);
-  padding-bottom: var(--space-lg);
-  border-top: 1px solid var(--color-rule);
-  border-bottom: 1px solid var(--color-rule);
-  margin-bottom: var(--space-2xl);
-}
-
-.paper-section > .section-content:first-child a {
-  font-size: var(--text-sm);
-  font-weight: 400;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-}
-
 /* ==========================================================================
-   Sections
+   Paper Groups + Section Labels
+   Label style: 12px / 500 / uppercase — navigation aid
+   24px gap from label to first entry. 64px between groups.
    ========================================================================== */
 
-section {
+.paper-group {
   box-sizing: border-box;
   border-top: none;
 }
 
+.paper-group + .paper-group {
+  margin-top: var(--space-3xl);
+}
+
+.section-label {
+  font-size: var(--text-xs);
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+  padding-bottom: var(--space-xs);
+  border-bottom: 1px solid var(--color-rule);
+  margin-bottom: var(--space-lg);
+}
+
 /* ==========================================================================
-   Paper Entries — the repeating content object
-   Internal spacing is tight (4–8px). Between entries is generous (48px).
+   Paper Entries
+   48px between entries. Tight internal spacing.
    ========================================================================== */
 
-.section-content {
-  margin-top: 0;
-}
+.section-content { margin-top: 0; }
+.section-content + .section-content { margin-top: var(--space-2xl); }
 
-/* 48px between entries — the breathing rhythm */
-.section-content + .section-content {
-  margin-top: var(--space-2xl);
-}
+/* Style 2: Title — L2 Paper titles
+   20px / 1.2 / serif 700 */
 
-/* -----------------------------------------------------------------------
-   Level 2 — Content Anchor (Paper titles)
-   22px serif bold. The focal point of each entry and the entire page.
-   ----------------------------------------------------------------------- */
-
-.section-content a[href$=".pdf"],
-.section-content a[href*="paper/"] {
+.paper-title,
+.paper-title-plain {
+  display: block;
   font-family: var(--font-serif);
   font-size: var(--text-lg);
-  line-height: var(--leading-snug);
+  line-height: var(--leading-tight);
   font-weight: 700;
+  margin-top: var(--space-xs);
 }
 
-/* -----------------------------------------------------------------------
-   Level 5 — Tertiary Action (Appendix links)
-   14px sans, secondary. Present but visually recessive.
-   ----------------------------------------------------------------------- */
+/* WIP titles (plain text, no link) — same Title style */
+.paper-title-plain {
+  color: var(--color-text);
+}
 
-.section-content a[href*="appendix"] {
+/* Style 5: Meta — paper metadata line (co-authors, appendix, toggle) */
+.paper-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0;
+  margin-top: var(--space-xs);
   font-size: var(--text-sm);
   color: var(--color-text-secondary);
 }
 
-/* -----------------------------------------------------------------------
-   Level 4 — Supporting Context (Co-authors)
-   14px sans, secondary color. 8px below title.
-   ----------------------------------------------------------------------- */
-
-.section-content > span {
+.paper-meta span,
+.paper-meta a {
   font-size: var(--text-sm);
   color: var(--color-text-secondary);
 }
 
-.section-content .openInNew {
-  font-size: var(--text-sm);
-  color: var(--color-text-secondary);
+.meta-sep {
+  margin: 0 0.4em;
 }
 
-/* -----------------------------------------------------------------------
-   Level 3 — Credential Signal (Status + Journal)
-   16px sans medium, crimson. The achievement marker.
-   Distinct from both the title above and metadata below.
-   ----------------------------------------------------------------------- */
+/* Style 3: Credential — L3 Status + Journal
+   16px / 1.4 / sans 500 / crimson */
 
 .updated-mark {
   margin-top: var(--space-xs);
@@ -304,25 +269,19 @@ section {
   letter-spacing: 0.01em;
 }
 
-/* -----------------------------------------------------------------------
-   Level 5 — Tertiary Action (Abstract toggle)
-   14px sans, secondary. 4px below status.
-   ----------------------------------------------------------------------- */
-
+/* Style 5: Meta — L5 Abstract toggle (inline in paper-meta) */
 .collapsible {
-  position: relative;
-  display: block;
+  display: inline;
   font-size: var(--text-sm);
   line-height: var(--leading-relaxed);
-  margin-top: var(--space-2xs);
   padding: 0;
-  height: 2rem;
   box-sizing: border-box;
   cursor: pointer;
   user-select: none;
   background-color: transparent;
   color: var(--color-text-secondary);
   border: none;
+  font-family: inherit;
 }
 
 .collapsible::after {
@@ -343,15 +302,10 @@ section {
   vertical-align: -0.1em;
 }
 
-.collapsible:hover {
-  color: var(--color-text);
-  text-decoration: underline;
-}
+.collapsible:hover { color: var(--color-text); }
 
-/* -----------------------------------------------------------------------
-   Level 6 — Expanded Content (Abstract body)
-   16px sans, secondary color, loose leading. Rule above for separation.
-   ----------------------------------------------------------------------- */
+/* Style 4: Body — L6 Abstract text
+   16px / 1.6 / sans 400 / secondary */
 
 .abstract {
   display: none;
@@ -362,7 +316,12 @@ section {
   border-top: 1px solid var(--color-rule-light);
 }
 
-.section-content p {
+.section-content p,
+.abstract p {
+  font-size: var(--text-base);
+  line-height: var(--leading-loose);
+  max-width: 65ch;
+  color: var(--color-text-secondary);
   margin-top: 0;
   padding-right: 0;
 }
@@ -376,21 +335,15 @@ section {
   font-family: var(--font-sans);
   font-size: 0.75em;
   margin-left: 0.2em;
-  font-style: normal;
 }
 
-.linkVoid {
-  cursor: auto;
-}
+.linkVoid { cursor: auto; }
 
 /* ==========================================================================
-   Footer — Level 5 tertiary
+   Footer
    ========================================================================== */
 
-.footer .col {
-  display: flex;
-  justify-content: center;
-}
+.footer .col { display: flex; justify-content: center; }
 
 .footer::before {
   content: "\a0";
@@ -412,50 +365,27 @@ section {
 }
 
 /* ==========================================================================
-   Responsive — Tablet
+   Responsive
    ========================================================================== */
 
 @media (max-width: 991px) {
   .intro {
     margin-right: 0;
-    position: static;
     margin-bottom: var(--space-2xl);
   }
-
-  .profile-image {
-    width: 200px;
-  }
-
-  .content {
-    margin-top: var(--space-xl);
-  }
-
-  .paper-section {
-    padding-bottom: var(--space-xl);
-  }
+  .profile-image { width: 200px; }
+  .content { margin-top: var(--space-xl); }
+  .paper-section { padding-bottom: var(--space-xl); }
 }
-
-/* ==========================================================================
-   Responsive — Mobile
-   ========================================================================== */
 
 @media (max-width: 576px) {
   :root {
-    --text-xl: 1.5rem;    /* 24px — scale down name */
-    --text-lg: 1.25rem;   /* 20px — scale down titles */
+    --text-xl: 1.5rem;
+    --text-lg: 1.125rem;
     --space-2xl: 2rem;
     --space-3xl: 3rem;
   }
-
-  .profile-image {
-    width: 160px;
-  }
-
-  .content {
-    margin-top: var(--space-lg);
-  }
-
-  .section-content + .section-content {
-    margin-top: var(--space-xl);
-  }
+  .profile-image { width: 160px; }
+  .content { margin-top: var(--space-lg); }
+  .section-content + .section-content { margin-top: var(--space-xl); }
 }
