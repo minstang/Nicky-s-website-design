@@ -8,13 +8,9 @@ for (i = 0; i < coll.length; i++) {
     if (content.style.display === "block") {
       content.style.display = "none";
       this.innerHTML = "Read abstract";
-      this.setAttribute("icon-name", "keyboard_arrow_down");
-
     } else {
       content.style.display = "block";
       this.innerHTML = "Fold abstract";
-      this.setAttribute("icon-name", "keyboard_arrow_up");
-
     }
   });
 }

@@ -1,314 +1,461 @@
-body{
-  color: #3A3A3A;
+/* ==========================================================================
+   Design System — Intellectual Minimalism
+
+   Type Scale (6 steps):
+     --text-xs   12px  Level 5 tertiary (footer)
+     --text-sm   14px  Level 4–5 supporting (co-authors, position, toggle)
+     --text-base 16px  Level 3 credential (status+journal) + Level 6 body
+     --text-md   18px  (reserved)
+     --text-lg   22px  Level 2 content anchor (paper titles)
+     --text-xl   28px  Level 1 page anchor (name)
+
+   Fonts (2 families):
+     Source Serif 4 — title voice (name, paper titles)
+     Hanken Grotesk — body voice (everything else)
+   ========================================================================== */
+
+:root {
+  /* Type scale */
+  --text-xs: 0.75rem;     /* 12px */
+  --text-sm: 0.875rem;    /* 14px */
+  --text-base: 1rem;      /* 16px */
+  --text-md: 1.125rem;    /* 18px */
+  --text-lg: 1.375rem;    /* 22px */
+  --text-xl: 1.75rem;     /* 28px */
+
+  /* Line heights */
+  --leading-tight: 1.2;
+  --leading-snug: 1.3;
+  --leading-normal: 1.4;
+  --leading-relaxed: 1.5;
+  --leading-loose: 1.6;
+
+  /* Spacing — 4pt base */
+  --space-2xs: 0.25rem;   /* 4px */
+  --space-xs: 0.5rem;     /* 8px */
+  --space-sm: 0.75rem;    /* 12px */
+  --space-md: 1rem;       /* 16px */
+  --space-lg: 1.5rem;     /* 24px */
+  --space-xl: 2rem;       /* 32px */
+  --space-2xl: 3rem;      /* 48px */
+  --space-3xl: 4rem;      /* 64px */
+
+  /* Colors */
+  --color-text: #3A3A3A;
+  --color-text-secondary: #5A5A5A;
+  --color-accent: #990033;
+  --color-rule: #C8C8C8;
+  --color-rule-light: #E0E0E0;
+  --color-bg: #fff;
+
+  /* Fonts */
+  --font-serif: 'Source Serif 4', 'Georgia', serif;
+  --font-sans: 'Hanken Grotesk', 'Helvetica Neue', sans-serif;
+
+  /* Layout */
+  --sidebar-width: 260px;
+  --gutter: clamp(2rem, 6vw, 5rem);
 }
 
-body,h1,h2,h3,h4,h5,h6,p{
-  margin: 0px;
-}
-a{
-font-family: 'Chivo', sans-serif;
-font-size: 16px;
-line-height: 20px;
-color: #3A3A3A;
-background-image: linear-gradient(to bottom,rgba(26,26,26,.5) 75%,rgba(26,26,26,.5) 75%);
-background-repeat: repeat-x;
-background-size: 1px 1px;
-background-position: 0 98%;
-}
+/* ==========================================================================
+   Base — Hanken Grotesk is the default
+   ========================================================================== */
 
-a:hover{
-text-decoration: none;
-color: #3A3A3A;
-background-image: linear-gradient(to bottom,rgba(58,58,58,1) 75%,rgba(58,58,58,1) 75%);
-
+body {
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  line-height: var(--leading-relaxed);
+  font-kerning: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
+body, h1, h2, h3, h4, h5, h6, p {
+  margin: 0;
+}
+
+/* ==========================================================================
+   Links — inherit font, style only the underline
+   ========================================================================== */
+
+a {
+  color: var(--color-text);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--color-text);
+}
 
 a:visited {
-  color: #3A3A3A;
+  color: var(--color-text);
 }
 
-button:focus {outline:0;}
-h1 {
-  font-family: 'Cardo', serif;
-  font-size: 36px;
-  line-height: 48px;
-}
-h3{
-  font-family: 'Chivo', sans-serif;
-  font-size: 21px;
-  line-height: 24px;
-  font-weight:700;
-}
-h4,h5{
-  font-family: 'Chivo', sans-serif;
-  font-size: 18px;
-  line-height: 20px;
+/* ==========================================================================
+   Level 1 — Page Anchor (Name)
+   28px serif bold. The single largest element. Seen once, orients everything.
+   ========================================================================== */
+
+h4 {
+  font-family: var(--font-serif);
+  font-size: var(--text-xl);
+  line-height: var(--leading-tight);
+  font-weight: 700;
+  letter-spacing: -0.01em;
 }
 
-h4{
-  font-weight:700;
-}
-h5{
-  font-weight:300;
-}
-h6{
-  font-family: 'Chivo', sans-serif;
-  font-size: 16px;
-  line-height: 20px;
-  font-weight:300;
+/* ==========================================================================
+   Level 4 — Supporting Context (Position, interests label)
+   14px sans, light/regular weight, secondary color. Quiet credentials.
+   ========================================================================== */
+
+h5 {
+  font-size: var(--text-sm);
+  line-height: var(--leading-relaxed);
+  font-weight: 300;
+  color: var(--color-text-secondary);
 }
 
-p{
-  font-family: 'Cardo', serif;
-  font-size: 16px;
-  line-height: 20px;
+h6 {
+  font-size: var(--text-xs);
+  line-height: var(--leading-relaxed);
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-2xs);
 }
 
-section{
-  box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  border-top: 1px solid #B5B5B5;
+/* ==========================================================================
+   Level 6 — Expanded Content (Abstract prose)
+   16px sans, secondary color, loose line-height for comfortable reading.
+   ========================================================================== */
+
+.section-content p,
+.abstract p {
+  font-size: var(--text-base);
+  line-height: var(--leading-loose);
+  max-width: 65ch;
+  color: var(--color-text-secondary);
 }
 
-section:not(:first-of-type){
-  margin-top:40px;
+/* ==========================================================================
+   Focus
+   ========================================================================== */
+
+button:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
 }
 
-section h3{
-  padding-top: 13px;
-}
-.title {
-  margin-top: 69px;
-  padding: 0 0 11px 0;
-}
+/* ==========================================================================
+   Intro Sidebar — the identity card
+   ========================================================================== */
 
-.header .col {
-  display: flex;
-  justify-content: space-between;
-
+.content {
+  margin-top: var(--space-3xl);
+  margin-bottom: var(--space-2xl);
 }
 
-.header::after {
-  content: "\a0";
+.intro {
+  margin-right: var(--gutter);
+  position: sticky;
+  top: var(--space-xl);
+  align-self: flex-start;
+}
+
+.profile-image {
   display: block;
-  width:100%;
-  height:0;
-  margin: 0 15px;
-  border-bottom: 1px solid #B5B5B5;
+  width: var(--sidebar-width);
+  height: auto;
 }
+
+.brief-bio {
+  margin-top: var(--space-lg);
+}
+
+.position {
+  margin-top: var(--space-xs);
+}
+
+.interest {
+  margin-top: var(--space-lg);
+  padding-top: var(--space-lg);
+  border-top: 1px solid var(--color-rule-light);
+}
+
+/* Level 4 — research interest values */
+.interest span {
+  font-size: var(--text-sm);
+  font-weight: 300;
+  color: var(--color-text-secondary);
+}
+
+/* Level 4 — email */
+.contact {
+  margin-top: var(--space-md);
+}
+
+.contact a {
+  font-size: var(--text-sm);
+}
+
+/* ==========================================================================
+   Paper Section — the research record
+   ========================================================================== */
+
+.paper-section {
+  padding-bottom: var(--space-2xl);
+  min-width: 0;
+}
+
+/* Level 5 — CV link (tertiary action, uppercase label) */
+.paper-section > .section-content:first-child {
+  margin-top: 0;
+  padding-top: var(--space-lg);
+  padding-bottom: var(--space-lg);
+  border-top: 1px solid var(--color-rule);
+  border-bottom: 1px solid var(--color-rule);
+  margin-bottom: var(--space-2xl);
+}
+
+.paper-section > .section-content:first-child a {
+  font-size: var(--text-sm);
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* ==========================================================================
+   Sections
+   ========================================================================== */
+
+section {
+  box-sizing: border-box;
+  border-top: none;
+}
+
+/* ==========================================================================
+   Paper Entries — the repeating content object
+   Internal spacing is tight (4–8px). Between entries is generous (48px).
+   ========================================================================== */
+
+.section-content {
+  margin-top: 0;
+}
+
+/* 48px between entries — the breathing rhythm */
+.section-content + .section-content {
+  margin-top: var(--space-2xl);
+}
+
+/* -----------------------------------------------------------------------
+   Level 2 — Content Anchor (Paper titles)
+   22px serif bold. The focal point of each entry and the entire page.
+   ----------------------------------------------------------------------- */
+
+.section-content a[href$=".pdf"],
+.section-content a[href*="paper/"] {
+  font-family: var(--font-serif);
+  font-size: var(--text-lg);
+  line-height: var(--leading-snug);
+  font-weight: 700;
+}
+
+/* -----------------------------------------------------------------------
+   Level 5 — Tertiary Action (Appendix links)
+   14px sans, secondary. Present but visually recessive.
+   ----------------------------------------------------------------------- */
+
+.section-content a[href*="appendix"] {
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+}
+
+/* -----------------------------------------------------------------------
+   Level 4 — Supporting Context (Co-authors)
+   14px sans, secondary color. 8px below title.
+   ----------------------------------------------------------------------- */
+
+.section-content > span {
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+}
+
+.section-content .openInNew {
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+}
+
+/* -----------------------------------------------------------------------
+   Level 3 — Credential Signal (Status + Journal)
+   16px sans medium, crimson. The achievement marker.
+   Distinct from both the title above and metadata below.
+   ----------------------------------------------------------------------- */
+
+.updated-mark {
+  margin-top: var(--space-xs);
+  font-size: var(--text-base);
+  font-weight: 500;
+  line-height: var(--leading-normal);
+  color: var(--color-accent);
+  letter-spacing: 0.01em;
+}
+
+/* -----------------------------------------------------------------------
+   Level 5 — Tertiary Action (Abstract toggle)
+   14px sans, secondary. 4px below status.
+   ----------------------------------------------------------------------- */
+
+.collapsible {
+  position: relative;
+  display: block;
+  font-size: var(--text-sm);
+  line-height: var(--leading-relaxed);
+  margin-top: var(--space-2xs);
+  padding: 0;
+  height: 2rem;
+  box-sizing: border-box;
+  cursor: pointer;
+  user-select: none;
+  background-color: transparent;
+  color: var(--color-text-secondary);
+  border: none;
+}
+
+.collapsible::after {
+  content: '';
+  display: inline-block;
+  width: 0.4em;
+  height: 0.4em;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  transform: rotate(45deg);
+  margin-left: 0.4em;
+  vertical-align: 0.1em;
+  transition: transform 0.2s ease;
+}
+
+.collapsible.active::after {
+  transform: rotate(-135deg);
+  vertical-align: -0.1em;
+}
+
+.collapsible:hover {
+  color: var(--color-text);
+  text-decoration: underline;
+}
+
+/* -----------------------------------------------------------------------
+   Level 6 — Expanded Content (Abstract body)
+   16px sans, secondary color, loose leading. Rule above for separation.
+   ----------------------------------------------------------------------- */
+
+.abstract {
+  display: none;
+  border: none;
+  color: var(--color-text);
+  margin-top: var(--space-sm);
+  padding-top: var(--space-sm);
+  border-top: 1px solid var(--color-rule-light);
+}
+
+.section-content p {
+  margin-top: 0;
+  padding-right: 0;
+}
+
+/* ==========================================================================
+   External link icon
+   ========================================================================== */
+
+.openInNew::after {
+  content: '↗';
+  font-family: var(--font-sans);
+  font-size: 0.75em;
+  margin-left: 0.2em;
+  font-style: normal;
+}
+
+.linkVoid {
+  cursor: auto;
+}
+
+/* ==========================================================================
+   Footer — Level 5 tertiary
+   ========================================================================== */
 
 .footer .col {
   display: flex;
   justify-content: center;
-
 }
-.footer::before{
+
+.footer::before {
   content: "\a0";
   display: block;
-  width:100%;
-  height:0;
+  width: 100%;
+  height: 0;
   margin: 0 15px;
-  border-top: 1px solid #B5B5B5;
+  border-top: 1px solid var(--color-rule);
 }
 
-.footer-content{
-  font-family: 'Chivo', sans-serif;
-  font-size: 14px;
+.footer-content {
+  font-size: var(--text-xs);
   text-align: center;
-  line-height: 20px;
   font-weight: 300;
-  padding-top: 7px;
-  margin-bottom: 75px;
-}
-.asu-logo {
-  margin-top: 51px;
-}
-
-.content {
-  margin-top: 68px;
+  padding-top: var(--space-md);
+  margin-bottom: var(--space-2xl);
+  color: var(--color-text-secondary);
+  letter-spacing: 0.02em;
 }
 
-.profile-image{
-  margin-left:-15px;
-}
+/* ==========================================================================
+   Responsive — Tablet
+   ========================================================================== */
 
-.brief-bio{
-  margin-left:-15px;
-  margin-top: 23px;
-}
-
-.position{
-  margin-top:4px;
-}
-
-.interest{
-  margin-top:12px;
-}
-
-.interest span{
-  font-family: 'Chivo', sans-serif;
-  font-size: 16px;
-  line-height: 20px;
-  font-weight:300;
-}
-
-.contact{
-  margin-top:16px;
-}
-
-.paper-section{
-  padding-bottom: 174px;
-  margin-left:-15px;
-  padding-right: 0;
-  margin-right: -5px;
-
-}
-.paper-section > .section-content:first-child{
-  margin-top: 0;
-  margin-bottom: 30px;
-  padding-top: 23px;
-  border-top: 1px solid #B5B5B5;
-}
-.section-content{
-  margin-top:23px;
-}
-
-.section-content:not(:first-of-type){
-  margin-top:36px;
-}
-
-
-.section-content p{
-  margin-top:12px;
-  padding-right: 5%;
-}
-
-.intro{
-  margin-right: 10vw;
-}
-
-.updated-mark{
-margin-top: 12px;
-font-family: 'Chivo', sans-serif;
-font-size: 15px;
-line-height: 20px;
-color: #990033;
-}
-
-.collapsible{
-  position: relative;
-  display: block;
-  font-family: 'Chivo', sans-serif;
-  font-size: 15px;
-  line-height: 20px;
-  margin-top:1px;
-  padding:0;
-  height:40px;
-  border: 1px solid transparent;
-	box-sizing: border-box;
-	cursor: pointer;
-	-webkit-user-select: none;
-	-moz-user-select: none;
-	-ms-user-select: none;
-	user-select: none;
-  background-color: white;
-  color: #3a3a3a;
-  border: none;
-
-}
-.collapsible::after{
-  content: attr(icon-name);
-  font-family: 'Material Icons';
-  font-feature-settings: 'liga';
-  font-size: 1rem;
-  line-height: 1rem;
-  position: relative;
-  vertical-align: -0.1875rem;
-  fill: currentColor;
-  display: inline-block;
-  margin-left: 0.25rem;
-}
-
-.collapsible:hover{
-text-decoration: underline;
-}
-.abstract{
-  display:none;
-  border: none;
-  color: #3a3a3a;
-}
-
-.openInNew::after{
-  content: attr(icon-name);
-  font-family: 'Material Icons';
-  font-feature-settings: 'liga';
-  font-size: 1rem;
-  line-height: 1rem;
-  position: relative;
-  vertical-align: -0.1875rem;
-  fill: currentColor;
-  display: inline-block;
-}
-
-.linkVoid{
-  cursor:auto;
-}
-
-.linkVoid:hover{
-background-image: linear-gradient(to bottom,rgba(26,26,26,.5) 75%,rgba(26,26,26,.5) 75%);
-}
-
-/* Mobile responsiveness */
 @media (max-width: 991px) {
   .intro {
     margin-right: 0;
-  }
-
-  .profile-image,
-  .brief-bio,
-  .paper-section {
-    margin-left: 0;
-  }
-
-  .title {
-    margin-top: 30px;
-  }
-
-  .asu-logo {
-    margin-top: 20px;
-    max-width: 180px;
-    height: auto;
-  }
-
-  .content {
-    margin-top: 40px;
-  }
-
-  .paper-section {
-    padding-bottom: 60px;
-  }
-}
-
-@media (max-width: 576px) {
-  .header .col {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .asu-logo {
-    margin-top: 15px;
-    max-width: 150px;
-  }
-
-  h1 {
-    font-size: 28px;
-    line-height: 36px;
+    position: static;
+    margin-bottom: var(--space-2xl);
   }
 
   .profile-image {
-    max-width: 200px;
-    height: auto;
+    width: 200px;
+  }
+
+  .content {
+    margin-top: var(--space-xl);
+  }
+
+  .paper-section {
+    padding-bottom: var(--space-xl);
+  }
+}
+
+/* ==========================================================================
+   Responsive — Mobile
+   ========================================================================== */
+
+@media (max-width: 576px) {
+  :root {
+    --text-xl: 1.5rem;    /* 24px — scale down name */
+    --text-lg: 1.25rem;   /* 20px — scale down titles */
+    --space-2xl: 2rem;
+    --space-3xl: 3rem;
+  }
+
+  .profile-image {
+    width: 160px;
+  }
+
+  .content {
+    margin-top: var(--space-lg);
+  }
+
+  .section-content + .section-content {
+    margin-top: var(--space-xl);
   }
 }
