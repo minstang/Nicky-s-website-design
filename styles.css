@@ -65,6 +65,7 @@
 body {
   color: var(--color-text);
   background-color: var(--color-bg);
+  color-scheme: light;
   font-family: var(--font-sans);
   font-size: var(--text-base);
   line-height: var(--leading-relaxed);
@@ -395,20 +396,6 @@ footer {
   padding-bottom: var(--space-2xl);
   color: var(--color-text-secondary);
   letter-spacing: 0.02em;
-}
-
-/* ==========================================================================
-   Dark Mode
-   ========================================================================== */
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --color-bg: oklch(15% 0 0);
-    --color-text: oklch(90% 0 0);
-    --color-text-secondary: oklch(65% 0 0);
-    --color-rule: oklch(30% 0 0);
-    --color-rule-light: oklch(22% 0 0);
-  }
 }
 
 /* ==========================================================================
