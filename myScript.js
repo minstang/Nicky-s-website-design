@@ -5,12 +5,8 @@ for (i = 0; i < coll.length; i++) {
   coll[i].addEventListener("click", function() {
     this.classList.toggle("active");
     var content = this.nextElementSibling;
-    if (content.style.display === "block") {
-      content.style.display = "none";
-      this.innerHTML = "Read abstract";
-    } else {
-      content.style.display = "block";
-      this.innerHTML = "Fold abstract";
-    }
+    var isOpen = content.classList.toggle("open");
+    this.setAttribute("aria-expanded", isOpen);
+    this.textContent = isOpen ? "Fold abstract" : "Read abstract";
   });
 }
