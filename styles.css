@@ -5,8 +5,8 @@
      --text-xs    12px   Section labels, footer
      --text-sm    14px   Metadata, interests, actions
      --text-base  16px   Credentials, venue, abstract body
-     --text-lg    20px   Paper titles
-     --text-xl    28px   Name
+     --text-lg    18px   Paper titles
+     --text-xl    24px   Name
 
    Line Heights (3 values):
      --leading-tight     1.2   Name
@@ -29,8 +29,8 @@
   --text-xs: 0.75rem;
   --text-sm: 0.875rem;
   --text-base: 1rem;
-  --text-lg: 1.25rem;
-  --text-xl: 1.75rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.5rem;
 
   --leading-tight: 1.2;
   --leading-relaxed: 1.5;
@@ -76,6 +76,7 @@ body {
 }
 
 body, h1, h2, h3, h4, h5, h6, p { margin: 0; }
+h1, h2, h3, .paper-title, .paper-title-plain, .paper-title-row { text-wrap: pretty; }
 address { font-style: normal; margin: 0; }
 
 /* ==========================================================================
@@ -106,7 +107,7 @@ h1 {
   font-family: var(--font-serif);
   font-size: var(--text-xl);
   line-height: var(--leading-tight);
-  font-weight: 700;
+  font-weight: 500;
   letter-spacing: -0.01em;
   white-space: nowrap;
 }
@@ -203,7 +204,7 @@ h1 {
   line-height: var(--leading-loose);
   color: var(--color-text);
   max-width: 65ch;
-  margin-bottom: var(--space-2xl);
+  margin-bottom: var(--space-xl);
 }
 
 /* ==========================================================================
@@ -214,7 +215,7 @@ h1 {
 .paper-group { box-sizing: border-box; }
 
 .paper-group + .paper-group {
-  margin-top: var(--space-3xl);
+  margin-top: var(--space-2xl);
 }
 
 .section-label {
@@ -237,9 +238,9 @@ h1 {
    ========================================================================== */
 
 .section-content { margin-top: 0; }
-.section-content + .section-content { margin-top: var(--space-2xl); }
+.section-content + .section-content { margin-top: var(--space-xl); }
 
-/* Paper titles — 20px serif 600, 1.35 leading (optical adjustment for serif) */
+/* Paper titles — 18px serif 500, 1.35 leading (optical adjustment for serif) */
 .paper-title-row {
   line-height: 1.35;
 }
@@ -249,8 +250,8 @@ h1 {
   display: block;
   font-family: var(--font-serif);
   font-size: var(--text-lg);
-  line-height: inherit;
-  font-weight: 600;
+  line-height: 1.35;
+  font-weight: 500;
 }
 
 /* When title is inside a title-row with appendix, it flows inline */
@@ -267,28 +268,17 @@ h1 {
   margin-left: var(--space-xs);
 }
 
-/* Venue — 16px sans 400, secondary. 8px below title. */
+/* Venue — 14px sans 400, secondary. Tight to title (4px). */
 .updated-mark {
-  margin-top: var(--space-xs);
-  font-size: var(--text-base);
+  margin-top: var(--space-2xs);
+  font-size: var(--text-sm);
   line-height: var(--leading-relaxed);
   font-weight: 400;
-  letter-spacing: 0.01em;
-  color: var(--color-text-secondary);
-  display: flex;
-  align-items: baseline;
-  gap: var(--space-2xs);
-}
-
-.icon-accepted {
-  flex-shrink: 0;
-  opacity: 0.5;
-  position: relative;
-  top: 2px;
+  letter-spacing: 0.02em;
   color: var(--color-text-secondary);
 }
 
-/* Meta line — 14px sans 400, secondary. 4px from venue (same cluster). */
+/* Meta line — 14px sans 400, secondary. Tight to venue (4px, same cluster). */
 .paper-meta {
   display: flex;
   flex-wrap: wrap;
@@ -308,12 +298,12 @@ h1 {
 
 .meta-sep { margin: 0 0.4em; }
 
-/* Abstract toggle — 14px sans 400, secondary. Own line, 12px from context cluster. */
+/* Abstract toggle — 14px sans 400, secondary. Own line, 8px from context cluster. */
 .collapsible {
   display: block;
   font-size: var(--text-sm);
   line-height: var(--leading-relaxed);
-  margin-top: var(--space-sm);
+  margin-top: var(--space-xs);
   padding: 0;
   cursor: pointer;
   user-select: none;
@@ -417,8 +407,8 @@ footer {
 
 @media (max-width: 576px) {
   :root {
-    --text-xl: 1.5rem;
-    --text-lg: 1.125rem;
+    --text-xl: 1.25rem;
+    --text-lg: 1rem;
     --space-2xl: 2rem;
     --space-3xl: 3rem;
   }
